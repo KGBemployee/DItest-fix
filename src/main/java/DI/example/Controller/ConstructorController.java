@@ -1,14 +1,11 @@
-package Controller;
+package DI.example.Controller;
 
-import Services.GreetingsService;
-
-
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
+import DI.example.Services.GreetingsService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 public class ConstructorController {
 
     private final GreetingsService greetingsService;
@@ -17,6 +14,7 @@ public class ConstructorController {
         this.greetingsService = greetingsService;
     }
 
+    @GetMapping("/greeting")
     public String greeting(){
        return greetingsService.greeting();
     }
